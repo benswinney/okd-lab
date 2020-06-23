@@ -99,7 +99,7 @@
     group: ldap
     mode: '0660'
 - name: ldapadd administrator.ldif
-  command: ldapadd -x -w root -D "cn=ldapadm,dc=home,dc=swinney,dc=com" -f /tmp/administrator.ldif
+  command: ldapadd -x -w root -D "cn=ldapadm,dc=home,dc=swinney,dc=io" -f /tmp/administrator.ldif
 - name: ldappasswd administrator
   command: ldappasswd -s administrator -w root -D "cn=ldapadm,dc=home,dc=swinney,dc=io" -x "uid=administrator,ou=users,dc=home,dc=swinney,dc=io"
 
