@@ -1,8 +1,8 @@
 ---
-# ldapsearch -x -h 10.0.0.2 -D "cn=ldapadm,dc=example,dc=com" -w "root" -b "ou=users,dc=example,dc=com"
-# ldapsearch -x -h 10.0.0.2 -D "cn=ldapadm,dc=example,dc=com" -w "root" -b "ou=groups,dc=example,dc=com"
-# ldapsearch -x -h 10.0.0.2 -b "ou=groups,dc=example,dc=com"
-# ldapsearch -x -h 10.0.0.2 -b "uid=admin,ou=users,dc=example,dc=com"
+# ldapsearch -x -h kvmhost1 -D "cn=ldapadm,dc=home,dc=swinney,dc=io" -w "root" -b "ou=users,dc=home,dc=swinney,dc=io"
+# ldapsearch -x -h kvmhost1 -D "cn=ldapadm,dc=home,dc=swinney,dc=io" -w "root" -b "ou=groups,dc=home,dc=swinney,dc=io"
+# ldapsearch -x -h kvmhost1 -b "ou=groups,dc=home,dc=swinney,dc=io"
+# ldapsearch -x -h kvmhost1 -b "uid=admin,ou=users,dc=home,dc=swinney,dc=io"
 
 - name: Install openldap
   yum:
@@ -77,7 +77,7 @@
     group: ldap
     mode: '0660'
 - name: ldapadd base.ldif
-  command: ldapadd -x -w root -D "cn=ldapadm,dc=example,dc=com" -f /tmp/base.ldif
+  command: ldapadd -x -w root -D "cn=ldapadm,dc=home,dc=swinney,dc=io" -f /tmp/base.ldif
 
 - name: Prepare admin.ldif
   template:
@@ -87,9 +87,9 @@
     group: ldap
     mode: '0660'
 - name: ldapadd admin.ldif
-  command: ldapadd -x -w root -D "cn=ldapadm,dc=example,dc=com" -f /tmp/admin.ldif
+  command: ldapadd -x -w root -D "cn=ldapadm,dc=home,dc=swinney,dc=io" -f /tmp/admin.ldif
 - name: ldappasswd admin
-  command: ldappasswd -s admin -w root -D "cn=ldapadm,dc=example,dc=com" -x "uid=admin,ou=users,dc=example,dc=com"
+  command: ldappasswd -s admin -w root -D "cn=ldapadm,dc=home,dc=swinney,dc=io" -x "uid=admin,ou=users,dc=home,dc=swinney,dc=io"
 
 - name: Prepare administrator.ldif
   template:
@@ -99,9 +99,9 @@
     group: ldap
     mode: '0660'
 - name: ldapadd administrator.ldif
-  command: ldapadd -x -w root -D "cn=ldapadm,dc=example,dc=com" -f /tmp/administrator.ldif
+  command: ldapadd -x -w root -D "cn=ldapadm,dc=home,dc=swinney,dc=com" -f /tmp/administrator.ldif
 - name: ldappasswd administrator
-  command: ldappasswd -s administrator -w root -D "cn=ldapadm,dc=example,dc=com" -x "uid=administrator,ou=users,dc=example,dc=com"
+  command: ldappasswd -s administrator -w root -D "cn=ldapadm,dc=home,dc=swinney,dc=io" -x "uid=administrator,ou=users,dc=home,dc=swinney,dc=io"
 
 - name: Prepare kubeadmin.ldif
   template:
@@ -111,9 +111,9 @@
     group: ldap
     mode: '0660'
 - name: ldapadd kubeadmin.ldif
-  command: ldapadd -x -w root -D "cn=ldapadm,dc=example,dc=com" -f /tmp/kubeadmin.ldif
+  command: ldapadd -x -w root -D "cn=ldapadm,dc=home,dc=swinney,dc=io" -f /tmp/kubeadmin.ldif
 - name: ldappasswd kubeadmin
-  command: ldappasswd -s kubeadmin -w root -D "cn=ldapadm,dc=example,dc=com" -x "uid=kubeadmin,ou=users,dc=example,dc=com"
+  command: ldappasswd -s kubeadmin -w root -D "cn=ldapadm,dc=home,dc=swinney,dc=io" -x "uid=kubeadmin,ou=users,dc=home,dc=swinney,dc=io"
 
 - name: Prepare lab.ldif
   template:
@@ -123,9 +123,9 @@
     group: ldap
     mode: '0660'
 - name: ldapadd lab.ldif
-  command: ldapadd -x -w root -D "cn=ldapadm,dc=example,dc=com" -f /tmp/lab.ldif
+  command: ldapadd -x -w root -D "cn=ldapadm,dc=home,dc=swinney,dc=io" -f /tmp/lab.ldif
 - name: ldappasswd lab
-  command: ldappasswd -s lab -w root -D "cn=ldapadm,dc=example,dc=com" -x "uid=lab,ou=users,dc=example,dc=com"
+  command: ldappasswd -s lab -w root -D "cn=ldapadm,dc=home,dc=swinney,dc=io" -x "uid=lab,ou=users,dc=home,dc=swinney,dc=io"
 
 - name: Prepare developer.ldif
   template:
@@ -135,9 +135,9 @@
     group: ldap
     mode: '0660'
 - name: ldapadd developer.ldif
-  command: ldapadd -x -w root -D "cn=ldapadm,dc=example,dc=com" -f /tmp/developer.ldif
+  command: ldapadd -x -w root -D "cn=ldapadm,dc=home,dc=swinney,dc=io" -f /tmp/developer.ldif
 - name: ldappasswd developer
-  command: ldappasswd -s developer -w root -D "cn=ldapadm,dc=example,dc=com" -x "uid=developer,ou=users,dc=example,dc=com"
+  command: ldappasswd -s developer -w root -D "cn=ldapadm,dc=home,dc=swinney,dc=io" -x "uid=developer,ou=users,dc=home,dc=swinney,dc=io"
 
 - name: Prepare groups.ldif
   template:
@@ -147,7 +147,7 @@
     group: ldap
     mode: '0660'
 - name: ldapadd groups.ldif
-  command: ldapadd -x -w root -D "cn=ldapadm,dc=example,dc=com" -f /tmp/groups.ldif
+  command: ldapadd -x -w root -D "cn=ldapadm,dc=home,dc=swinney,dc=io" -f /tmp/groups.ldif
 
 - name: Clean tmp files
   file:
