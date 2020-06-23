@@ -317,13 +317,13 @@ sudo yum -y update
 
 ```
 
-### Install Ansible and Git
+### Install Ansible, Git and lxml
 
 ```bash
 [lab@lab]
 
 sudo yum -y install epel-release
-sudo yum -y install ansible git
+sudo yum -y install ansible git python-lxml
 
 ```
 

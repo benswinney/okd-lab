@@ -38,3 +38,25 @@
     mode: '0755'
     remote_src: yes
   become_user: lab
+
+- name: Setup VM Storage Pool for KVM
+  virt_pool:
+    command: build
+    name: vms
+
+- name: Start VM Storage Pool for KVM
+  virt_pool:
+    command: create
+    name: vms
+
+- name: Ensure VM Storage Pool for KVM is Active
+  virt_pool:
+    state: active
+    name: vms
+
+- name: Start VM Storage Pool for KVM at Boot
+  virt_pool:
+    autostart: yes
+    name: vms
+
+
