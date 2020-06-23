@@ -45,10 +45,10 @@
     name: vms
     xml: "{{ lookup('template', 'templates/storagepool.xml.j2') }}"
 
-- name: Setup VM Storage Pool for KVM
-  virt_pool:
-    command: build
-    name: vms
+#- name: Setup VM Storage Pool for KVM
+#  virt_pool:
+#    command: build
+#    name: vms
 
 - name: Start VM Storage Pool for KVM
   virt_pool:
