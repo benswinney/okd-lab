@@ -1,9 +1,9 @@
 ---
-- name: Kickstart Bastion Host with packer.io
+- name: Kickstart Bastion / Services Host with packer.io
   hosts: localhost
   gather_facts: no
   roles:
-    - bind
+#    - bind
     - chrony
     - ldap
     - tftp

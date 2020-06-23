@@ -1,5 +1,5 @@
 ---
-- hosts: 10.0.0.2
+- hosts: services
   gather_facts: no
   remote_user: root
   roles:
@@ -9,7 +9,7 @@
     - docker
     - quay
 # optional
-    - gitlab
-    - portainer
-    - keycloak
-    - artifactory
+#    - gitlab
+#    - portainer
+#    - keycloak
+#    - artifactory

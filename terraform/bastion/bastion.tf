@@ -2,10 +2,10 @@ locals {
 
   # the amount of memory in MiB
   # recommended 24GB with all possible services
-  memory = "24600"
+  memory = "4096"
 
   # the amount of virtual cpus
-  vcpu = 12
+  vcpu = 4
 
 }
 
@@ -59,7 +59,7 @@ resource "libvirt_domain" "bastion" {
       type     = "ssh"
       user     = "root"
       password = "root"
-      host     = "10.0.0.2"
+      host     = "kvmhost01"
       timeout  = "8m"
     }
     inline = [
@@ -72,7 +72,7 @@ resource "libvirt_domain" "bastion" {
       type     = "ssh"
       user     = "root"
       password = "root"
-      host     = "10.0.0.2"
+      host     = "kvmhost01"
     }
     source      = "~/okd-lab/.ssh"
     destination = "/root/"
@@ -83,7 +83,7 @@ resource "libvirt_domain" "bastion" {
       type     = "ssh"
       user     = "root"
       password = "root"
-      host     = "10.0.0.2"
+      host     = "kvmhost01"
     }
     inline = [
       "rm ~/.ssh/config",
@@ -93,7 +93,7 @@ resource "libvirt_domain" "bastion" {
   }
 
   provisioner "local-exec" {
-    command = "ansible-playbook --ssh-extra-args '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' -i '10.0.0.2,' --private-key ~/okd-lab/.ssh/id_rsa -T 300 ~/okd-lab/ansible/bastion/terraform.yml"
+    command = "ansible-playbook --ssh-extra-args '-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null' -i 'kvmhost01,' --private-key ~/okd-lab/.ssh/id_rsa -T 300 ~/okd-lab/ansible/bastion/terraform.yml"
   }
 
 }

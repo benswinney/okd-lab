@@ -1,60 +1,90 @@
-
-Host 10.0.0.2
-  HostName 10.0.0.2
+# KVM Host 1
+Host kvmhost01
+  HostName kvmhost01
   IdentityFile ~/okd-lab/.ssh/id_rsa
   User root
   CheckHostIP no
 
-Host bastion
-  HostName bastion
+# KVM Host 2
+Host kvmhost02
+  HostName kvmhost02
   IdentityFile ~/okd-lab/.ssh/id_rsa
   User root
   CheckHostIP no
 
-Host lb
-  HostName 10.0.0.99
+# KVM Host 3
+Host kvmhost03
+  HostName kvmhost03
   IdentityFile ~/okd-lab/.ssh/id_rsa
   User root
   CheckHostIP no
 
+# Services aka Bastion Host
+Host services
+  HostName services
+  IdentityFile ~/okd-lab/.ssh/id_rsa
+  User root
+  CheckHostIP no
+
+# LB HAProxy 1
+Host proxy01
+  HostName proxy01
+  IdentityFile ~/okd-lab/.ssh/id_rsa
+  User root
+  CheckHostIP no
+
+# LB HAProxy 2
+Host proxy02
+  HostName proxy02
+  IdentityFile ~/okd-lab/.ssh/id_rsa
+  User root
+  CheckHostIP no
+
+# OKD/OCP Bootstrap
 Host bootstrap
-  HostName 10.0.0.10
+  HostName bootstrap
   IdentityFile ~/okd-lab/.ssh/id_rsa
   User root
   CheckHostIP no
 
-Host master-0
-  HostName 10.0.0.100
+# OKD/OCP Master 1
+Host master01
+  HostName master01
   IdentityFile ~/okd-lab/.ssh/id_rsa
   User root
   CheckHostIP no
 
-Host master-1
-  HostName 10.0.0.101
+# OKD/OCP Master 2
+Host master02
+  HostName master02
   IdentityFile ~/okd-lab/.ssh/id_rsa
   User root
   CheckHostIP no
 
-Host master-2
-  HostName 10.0.0.102
+# OKD/OCP Master 3
+Host master03
+  HostName master03
   IdentityFile ~/okd-lab/.ssh/id_rsa
   User root
   CheckHostIP no
 
-Host worker-0
-  HostName 10.0.0.100
+# OKD/OCP Worker 1
+Host worker01
+  HostName worker01
   IdentityFile ~/okd-lab/.ssh/id_rsa
   User root
   CheckHostIP no
 
-Host worker-1
-  HostName 10.0.0.101
+# OKD/OCP Worker 2
+Host worker02
+  HostName worker02
   IdentityFile ~/okd-lab/.ssh/id_rsa
   User root
   CheckHostIP no
 
-Host worker-2
-  HostName 10.0.0.102
+# OKD/OCP Worker 3
+Host worker03
+  HostName worker03
   IdentityFile ~/okd-lab/.ssh/id_rsa
   User root
   CheckHostIP no

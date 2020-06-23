@@ -1,15 +1,15 @@
 ---
-- name: Enable dnsmasq
-  template:
-    src: 00-dnsmasq.conf.j2
-    dest: /etc/NetworkManager/conf.d/00-dnsmasq.conf
-  become_user: root
+#- name: Enable dnsmasq
+#  template:
+#    src: 00-dnsmasq.conf.j2
+#    dest: /etc/NetworkManager/conf.d/00-dnsmasq.conf
+#  become_user: root
 
-- name: Enable okd-lab dns
-  template:
-    src: 00-okd-lab.conf.j2
-    dest: /etc/NetworkManager/dnsmasq.d/00-okd-lab.conf
-  become_user: root
+#- name: Enable okd-lab dns
+#  template:
+#    src: 00-okd-lab.conf.j2
+#    dest: /etc/NetworkManager/dnsmasq.d/00-okd-lab.conf
+#  become_user: root
 
 - name: Restart NetworkManager
   service:

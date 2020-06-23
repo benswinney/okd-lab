@@ -1,8 +1,8 @@
 ---
-- name: Install bind-utils
-  yum:
-    name: bind-utils
-    state: installed
+#- name: Install bind-utils
+#  yum:
+#    name: bind-utils
+#    state: installed
 
 - name: Install haproxy
   yum:
@@ -12,6 +12,16 @@
 - name: Install policycoreutils-python
   yum:
     name: policycoreutils-python
+    state: installed
+
+- name: Install keepalived
+  yum:
+    name: keepalived
+    state: installed
+
+- name: Install psmisc
+  yum:
+    name: psmisc
     state: installed
 
 - name: Publish haproxy.cfg
