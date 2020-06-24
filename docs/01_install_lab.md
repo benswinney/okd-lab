@@ -180,6 +180,7 @@ sudo firewall-cmd --reload
 ```bash
 [lab@lab]
 
+sudo yum -y install qemu-kvm libvirt libvirt-python libguestfs-tools virt-install
 sudo yum -y install @virtualization-client
 
 ```
