@@ -1,7 +1,7 @@
 ---
 - name: Create .ssh folder
   file:
-    path: ~/.ssh
+    path: /home/lab/.ssh
     state: directory
     owner: lab 
     group: lab
