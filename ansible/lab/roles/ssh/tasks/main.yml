@@ -1,14 +1,11 @@
 ---
 - name: Create .ssh folder
-  user:
-    name: lab
-    file:
-      path: ~/.ssh
-      state: directory
-      owner: lab 
-      group: lab
-      mode: 0700
-  become_user: lab
+  file:
+    path: ~/.ssh
+    state: directory
+    owner: lab 
+    group: lab
+    mode: '0700'
 
 - name: Create SSH key
   user:
