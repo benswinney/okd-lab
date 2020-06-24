@@ -10,29 +10,29 @@
 - name: Install Tools and KVM Software
   become: yes
   yum:
-    name: "{{ item }}"
+    name: "{{ packages }}"
+  vars:
+    packages:
+        - wget
+        - git
+        - net-tools
+        - bind-utils
+        - bash-completion
+        - nfs-utils
+        - rsync
+        - libvirt-python
+        - libguestfs-tools
+        - libvirt
+        - qemu-kvm
+        - virt-manager
+        - virt-install
+        - xorg-x11-apps
+        - xauth
+        - virt-viewer
+        - libguestfs-xfs
+        - iscsi-initiator-utils
     state: latest
-  with_items:
-    - wget
-    - git
-    - net-tools
-    - bind-utils
-    - bash-completion
-    - nfs-utils
-    - rsync
-    - libvirt-python
-    - libguestfs-tools
-    - libvirt
-    - qemu-kvm
-    - virt-manager
-    - virt-install
-    - xorg-x11-apps
-    - xauth
-    - virt-viewer
-    - libguestfs-xfs
-    - iscsi-initiator-utils
-  notify: enable_service
-
+  
 - name: Enable Nested Virtualisation
   template:
     src: kvm.conf.j2
@@ -40,6 +40,11 @@
     owner: root
     group: root
     mode: '0644'
+
+- name: Enable Libvirtd Service
+  service:
+    name: libvirtd
+    enabled: yes
 
 - name: Restart Libvirtd Service
   service:
