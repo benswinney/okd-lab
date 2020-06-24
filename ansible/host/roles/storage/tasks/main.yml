@@ -1,0 +1,34 @@
+---
+- name: KVM - Stop Default Storage Pool
+  virt_pool:
+    command: destroy
+    name: default
+  become_user: root
+
+- name: KVM - Delete Default Storage Pool
+  virt_pool:
+    command: delete
+    name: default
+  become_user: root  
+
+- name: KVM - Undefine Default Storage Pool
+  virt_pool:
+    command: undefine
+    name: default
+  become_user: root
+
+- name: KVM - Define New Default Storage Pool
+  virt_pool:
+    command: define
+    name: default
+    xml: "{{ lookup('template', 'templates/default-storagepool.xml.j2') }}"
+
+- name: KVM - Autostart New Default Storage Pool
+  virt_pool:
+    autostart: yes
+    name: default
+
+- name: KVM - Start New Default Storage Pool
+  virt_pool:
+    command: create
+    name: default
